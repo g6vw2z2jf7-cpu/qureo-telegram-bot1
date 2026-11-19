@@ -1,5 +1,6 @@
 
 import os
+import asyncio
 from telegram import Update
 from telegram.ext import (
     Application,
@@ -31,6 +32,8 @@ def main():
     app.add_handler(MessageHandler(
         filters.TEXT & ~filters.COMMAND, question
     ))
+
+    asyncio.set_event_loop(asyncio.new_event_loop())
     app.run_polling()
 
 if __name__ == "__main__":
